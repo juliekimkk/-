@@ -1,3 +1,4 @@
+
 package guestbook.service;
 
 public class InvalidPassowrdException extends ServiceException {

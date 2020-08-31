@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="guestbook.service.ServiceException" project="chap15" 
     file="/chap15/src/guestbook/service/ServiceException.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="196" x="595" y="-8"/>    
+    <position height="-1" width="-1" x="908" y="21"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="jdbc.connection.ConnectionProvider" project="chap15" 
     file="/chap15/src/jdbc/connection/ConnectionProvider.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="273" y="220"/>    
+    <position height="-1" width="-1" x="271" y="151"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

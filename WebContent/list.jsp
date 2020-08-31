@@ -40,8 +40,8 @@
 	<tr>
 		<td>
 		<td>메시지 번호: ${message.id} </td>
-		<td>손님 이름: <a href="updateForm.jsp?messageId= ${message.guestName}">[업데이트하기]</a></td>
-		<td>메시지: ${message.message} </td>
+		<td>손님 이름: ${message.guestName }</td>
+		<td>메시지: <a href="confirmUpdate.jsp?messageId=${message.id}">[업데이트하기]</a>  </td>
 		<td><a href="confirmDeletion.jsp?messageId=${message.id}">[삭제하기]</a>
 		</td>
 	</tr>
