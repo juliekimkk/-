@@ -28,10 +28,11 @@ public class MessageDao {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = conn.prepareStatement(
-					"insert into guestbook_message " + "(guest_name, password, message) values (?, ?, ?)");
+					"insert into guestbook_message " + "(guest_name, password, message, bImage) values (?, ?, ?,?)");
 			pstmt.setString(1, message.getGuestName());
 			pstmt.setString(2, message.getPassword());
 			pstmt.setString(3, message.getMessage());
+			pstmt.setString(4, message.getimage());
 			return pstmt.executeUpdate();
 		} finally {
 			JdbcUtil.close(pstmt);
@@ -79,6 +80,20 @@ public class MessageDao {
 		}
 	}
 
+	public int searchCount(Connection conn, String search) throws SQLException {
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("select count(*) from guestbook_message where guest_name like '" + search + "'");
+			rs.next();
+			return rs.getInt(1);
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+		}
+	}
+
 	public List<Message> selectList(Connection conn, int firstRow, int endRow) throws SQLException { // selectList 는
 																										// GetMessagelistService의
 																										// 42번째에서 옴
@@ -116,17 +131,44 @@ public class MessageDao {
 		}
 	}
 
-	public int update(Connection conn, int messageId, String guest_name, String message2)
-			throws SQLException {
+	public int update(Connection conn, int messageId, String guest_name, String message2, String image) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement("update guestbook_message set message = ?, guest_name = ? where message_id=?");
+			pstmt = conn.prepareStatement(
+					"update guestbook_message set message = ?, " + "guest_name = ? "+" bImage = load_file(?)"+"where message_id=?");
 			pstmt.setString(1, message2);
 			pstmt.setString(2, guest_name);
-			pstmt.setInt(3, messageId);
+			pstmt.setString(3, image);
+			pstmt.setInt(4,messageId);
 			return pstmt.executeUpdate();
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
 	}
+
+	public List<Message> searchList(Connection conn, String search) throws SQLException { // selectList 는
+		// GetMessagelistService의
+		// 42번째에서 옴
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from guestbook_message  where guest_name like ?");
+			pstmt.setString(1, search); // 첫번째 페이지니까 0들어가게
+			rs = pstmt.executeQuery(); // 사용자정보 질의구문
+			if (rs.next()) {
+				List<Message> messageList = new ArrayList<Message>(); // messageList에 MakeMessageFromResultSet값을 넣어준다.
+				do {
+
+					messageList.add(makeMessageFromResultSet(rs));
+				} while (rs.next());
+				return messageList;
+			} else {
+				return Collections.emptyList();
+			}
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+
 }

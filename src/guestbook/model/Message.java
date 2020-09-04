@@ -6,6 +6,7 @@ public class Message { //모델파일
 	private String guestName;
 	private String password;
 	private String message;
+	private String image;
 
 	public int getId() {
 		return id;
@@ -45,5 +46,12 @@ public class Message { //모델파일
 
 	public boolean matchPassword(String pwd) {
 		return password != null && password.equals(pwd);
+	}
+	public String getimage() {
+		return image;
+	}
+
+	public void setimage(String image) {
+		this.image = image;
 	}
 }

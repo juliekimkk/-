@@ -12,6 +12,7 @@
 <body>
 <form action="writeMessage.jsp" method="post">
 이름: <input type="text" name="guestName"> <br>
+파일붙이기 : <input type="file" name="file1"/><br/>
 암호: <input type="password" name="password"> <br>
 메시지: <textarea name="message" cols="30" rows="3"></textarea> <br>
 <input type="submit" value="메시지 남기기" />
