@@ -33,5 +33,13 @@
 		 메시지를 업데이트하시려면 암호를 입력하세요:<br> 암호: <input type="password" name="password">
 		<br> <input type="submit" value="메시지 업데이트하기">
 	</form>
+	
+	<!-- enctype은 파입 업로드에서 무조건 사용되어야한다 -->
+
+	<form action="uploadAction.jsp?messageId=<%=  Integer.toString(messageId) %>" method="post" enctype="multipart/form-data">
+	
+		New파일 : <input type="file" name="file"><br>
+		<input type="submit" value="업로드"><br>
+	</form>
 </body>
 </html>

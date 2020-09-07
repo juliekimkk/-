@@ -36,7 +36,7 @@ public class DBCPInit extends HttpServlet {
 	private void initConnectionPool() {
 		try {
 			String jdbcUrl = 
-					"jdbc:mysql://localhost:3306/GuestBook?" + 
+					"jdbc:mysql://localhost:3306/guestbook_message?" + 
 					"useUnicode=true&characterEncoding=utf8";
 			String username = "root";
 			String pw = "rootroot";

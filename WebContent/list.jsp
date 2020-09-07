@@ -34,11 +34,12 @@ MessageListView viewData = messageListService.getMessageList(pageNumber);
 					<td>손님 이름: ${message.guestName }</td>
 					<td>메시지: ${message.message }</td>
 					<td><a href="confirmUpdate.jsp?messageId=${message.id}">[업데이트하기]</a></td>
-					<td><a href="confirmDeletion.jsp?messageId=${message.id}">[삭제하기]</a>
-					<td><a href="<?=$path.$filename;?>"/></td>
+					<td><a href="confirmDeletion.jsp?messageId=${message.id}">[삭제하기]</a></td>
+					<td ><img src="Images/${message.realfilename}" width=50 height=50 /></td>
 				</tr>
 				
 			</c:forEach>
+			<%-- <td><a href="<?=$path.$filename;?>"/></td> --%>
 		</table>
 
 		<table border="1">

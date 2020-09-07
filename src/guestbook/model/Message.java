@@ -6,7 +6,8 @@ public class Message { //모델파일
 	private String guestName;
 	private String password;
 	private String message;
-	private String image;
+	private String filename;
+	private String realfilename;
 
 	public int getId() {
 		return id;
@@ -47,11 +48,19 @@ public class Message { //모델파일
 	public boolean matchPassword(String pwd) {
 		return password != null && password.equals(pwd);
 	}
-	public String getimage() {
-		return image;
+	public String getFilename() {
+		return filename;
 	}
 
-	public void setimage(String image) {
-		this.image = image;
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+
+	public String getRealfilename() {
+		return realfilename;
+	}
+
+	public void setRealfilename(String realfilename) {
+		this.realfilename = realfilename;
 	}
 }
